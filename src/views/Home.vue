@@ -77,9 +77,18 @@ export default {
       selectedIndex: 0
     }
   },
+  mounted () {
+    this.preload()
+  },
   methods: {
     submit () {
       this.$router.push(this.templates[this.selectedIndex].name)
+    },
+    preload () {
+      for (let template of this.templates) {
+        let image = new Image()
+        image.src = template.previewImage
+      }
     }
   },
   computed: {
